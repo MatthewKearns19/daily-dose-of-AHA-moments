@@ -1,1 +1,49 @@
-<h1>Daily Dose Of Aha-Moments</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p class="h4">Trending Topics</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      Trending 1
+    </div>
+    <div class="col-sm-3">
+      Trending 2
+    </div>
+    <div class="col-sm-3">
+      Trending 3
+    </div>
+    <div class="col-sm-3">
+      Trending 4
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="h4">Aha feed:</p>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-sm-8">
+      <% @posts.each do |post| %>
+        <div class="card mt-3 shadow p-3 mb-5 bg-white rounded">
+          <h4><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
+          <p><%= truncate post.body, length: 150 %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-sm-4"">
+      <p class="h5">Communities</p>
+
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <% @communities.each do | community| %>
+            <li class="list-group-item"><%= link_to community.name, community_path(community) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <%# link to community path in community -> index.html %>
+      <%= link_to "View All Communities", communities_path, class: "btn btn-primary mt-4" %>
+    </div>
+  </div>
+</div>

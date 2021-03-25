@@ -1,14 +1,19 @@
 <div class="container">
   <div class = "row">
-    <div class="col-4">
-      tester
-    </div>
-    <div class="col-4">
-      tester
-    </div>
-    <div class="col-4">
-      tester
-    </div>
-
+    <div class="col-12 pt-3 pb-3 nb-4 boarder-bottom">
+      <div class="float-right">
+       <% if user_signed_in? %>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn btn-outline-primary") %>
+        </li>
+       <% else %>
+        <li>
+          <%= link_to('Log In', new_user_session_path, class: "btn btn-outline-primary") %>
+          <%= link_to('Sign Up', new_user_registration_path, class: "btn btn-outline-primary") %>
+        </li>
+       <% end %>
+      </div>
+      <p class = "h3"><%= link_to "Daily Dose Of Aha!", root_path %></p>
+     </div>
   </div>
 </div>

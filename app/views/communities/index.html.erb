@@ -1,0 +1,16 @@
+<div>
+  <%= link_to "Create New Community", new_community_path, class: "btn btn-outline-primary" %>
+</div>
+<% if @communities.size > 0 %>
+  <% @communities.each do|community| %>
+    <div class="card mt-4">
+      <h3>
+        <%= link_to community.name, community %>
+      </h3>
+      <%# simple_format for paragraph %>
+      <%= simple_format community.description %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No Commutities Created</p>
+<% end %>
