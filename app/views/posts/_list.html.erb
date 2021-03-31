@@ -1,0 +1,7 @@
+<% posts.each do |post| %>
+  <div class="card mt-3 shadow p-3 mb-5 bg-white rounded">
+    <h4><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
+    <p>Posted by <%= post.user.username %> </p>
+    <p><%= truncate post.body, length: 150 %></p>
+  </div>
+<% end %>
