@@ -1,19 +1,37 @@
-<div class="container">
-  <div class = "row">
-    <div class="col-12 pt-3 pb-3 nb-4 boarder-bottom">
-      <div class="float-right">
-       <% if user_signed_in? %>
-        <li>
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn btn-outline-primary") %>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container col-sm-11">
+    <%#<a class="navbar-brand" href="#">Daily Dose Of Aha!</a>%>
+    <p class = "h3"><%= link_to "Daily Dose Of Aha!", root_path %></p>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Profile <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My Favorites</a>
+        </li>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+       <% if user_signed_in? %>
+       <li class="nav-item">
+         <a class="nav-link float-right my-2"><%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn btn-outline-light") %></a>
+       </li>
        <% else %>
         <li>
-          <%= link_to('Log In', new_user_session_path, class: "btn btn-outline-primary") %>
-          <%= link_to('Sign Up', new_user_registration_path, class: "btn btn-outline-primary") %>
+          <a class="nav-link float-right"><%= link_to('Log In', new_user_session_path, class: "btn btn-outline-light") %></a>
+        </li>
+        <li>
+          <a class="nav-link float-right"><%= link_to('Sign Up', new_user_registration_path, class: "btn btn-outline-light") %></a>
         </li>
        <% end %>
-      </div>
-      <p class = "h3"><%= link_to "Daily Dose Of Aha!", root_path %></p>
      </div>
   </div>
-</div>
+</nav>
