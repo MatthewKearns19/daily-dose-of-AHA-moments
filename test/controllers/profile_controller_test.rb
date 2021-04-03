@@ -1,9 +1,7 @@
 require "test_helper"
 
-class PostsControllerTest < ActionDispatch::IntegrationTest
+class ProfileControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-
-  #https://guides.rubyonrails.org/v4.1/testing.html
 
   setup do
     get "/users/sign_in"
@@ -13,5 +11,5 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     #stop teh test contiinuing if it fails on login
     assert_response :success
   end
-
+  
 end

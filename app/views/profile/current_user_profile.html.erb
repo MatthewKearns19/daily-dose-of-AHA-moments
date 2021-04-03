@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-sm-8">
+      <h2>My Profile</h2>
+      <h6 class="mt-4 mb-0">Username: <%= @profile.username %></h6>
+      <%= @profile.users_full_name %>
+      <%= render partial: "posts/list", locals:{posts: @posts}%>
+
+    </div>
+    <div class="col-sm-4">
+      # users courses here or link to all courses
+
+
+
+    </div>
+</div>

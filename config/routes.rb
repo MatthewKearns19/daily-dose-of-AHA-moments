@@ -3,6 +3,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  # accepts username param after establishing a one-to-one relationship
+  resources :profile, param: :username, only: [:show]
+  get "myprofile" => "profile#current_user_profile"
+
+  resources :users do
+    resources :courses
+  end
+
   resources :communities do
     resources :posts
   end
