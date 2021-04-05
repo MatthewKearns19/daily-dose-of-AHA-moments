@@ -79,8 +79,6 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-
-
   teardown do
     Warden.test_reset!
   end

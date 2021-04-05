@@ -13,4 +13,5 @@
 </p>
 
 <%= link_to 'Edit', edit_user_course_path(@user, @course) %> |
+<%= link_to 'Delete', user_course_path(@user, @course), method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', user_courses_path(@user) %>

@@ -6,7 +6,7 @@
     <p> Launched on <%= DateTime.now.to_s(:date_stamp)%></p>
     <% if @user == current_user %>
       <td><%= link_to 'Edit', edit_user_course_path(@user, course) %></td>
-      <td><%= link_to 'Destroy', user_course_path(@user, course), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Delete', user_course_path(@user, course), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </div>
 <% end %>
