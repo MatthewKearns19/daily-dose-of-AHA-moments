@@ -1,8 +1,8 @@
 <% posts.each do |post| %>
   <div class="card mt-3 shadow p-3 mb-5 bg-white rounded">
-    <p class="mb-0">New Aha by: <%= link_to post.user.username, profile_path(post.user.username) %></p>
+    <p class="mb-0">New Aha by: <%= link_to post.user.username, profile_path(post.user) %></p>
     <h4 class="mb-0"><%= link_to post.title, community_post_path(post.community_id, post) %></h4>
-    <p>Posted in: <%= link_to post.community.name, community_path(post.community) %></p>
+    <p>Posted in: <%= link_to post.community.name, community_path(post.community) %> on <%= DateTime.now.to_s(:date_stamp)%></p>
     <p><%= truncate post.body, length: 150 %></p>
   </div>
 <% end %>

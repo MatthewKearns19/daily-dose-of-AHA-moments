@@ -1,15 +1,20 @@
 <div class="row">
     <div class="col-sm-8">
       <h2>My Profile</h2>
-      <h6 class="mt-4 mb-0">Username: <%= @profile.username %></h6>
-      <%= @profile.users_full_name %>
+      <h6 class="mt-4 mb-0">Username: <%= @user.username %></h6>
+      <h6 class="mt-4 mb-0">Name: <%= @user.users_full_name %></h6>
       <%= render partial: "posts/list", locals:{posts: @posts}%>
 
     </div>
     <div class="col-sm-4">
-      # users courses here or link to all courses
-
-
-
+      <p class="h5">My Courses</p>
+      <div class="card shadow">
+        <ul class="list-group list-group-flush">
+          <% @courses.each do | course| %>
+            <li class="list-group-item"><%= link_to course.course_name, user_course_path(@user, course) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <%= link_to "View All Courses", user_courses_path(@user), class: "btn btn-outline-primary mt-4" %>
     </div>
 </div>

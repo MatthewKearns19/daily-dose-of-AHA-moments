@@ -1,11 +1,40 @@
-<div class="row">
-  <div class="col-sm-4">
-    <h4><%= @profile.username %></h4>
-
+<div class="container">
+  <div class="row">
+    <div class="col mt-4">
+      <h2><%= @user.username %></h2>
+    </div>
   </div>
+  <p class="h6 mt-4">Most Recent Courses offered </p>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card shadow">
+        <div class="list-group list-group-horizontal list-group-flush">
+          <% @user.courses.each do | course| %>
+            <li class="list-group-item"><%= link_to course.course_name, user_course_path(@user, course) %></li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mt-4 mb-0">
+      <p class="h4">Aha's Posted by <%= @user.username %>:</p>
+    </div>
+  </div>
+  <div class="row mt-4">
     <div class="col-sm-8">
       <%= render partial: "posts/list", locals:{posts: @posts}%>
-
     </div>
-
+    <div class="col-sm-4">
+      <p class="h5">Most purchased courses off <%= @user.username %></p>
+      <div class="card shadow">
+        <ul class="list-group list-group-flush">
+          <% @courses.each do | course| %>
+            <li class="list-group-item"><%= link_to course.course_name, user_course_path(@user, course) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <%= link_to "View All Courses", user_courses_path(@user), class: "btn btn-outline-primary mt-4" %>
+    </div>
+  </div>
 </div>

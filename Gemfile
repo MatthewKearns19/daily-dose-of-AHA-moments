@@ -26,6 +26,8 @@ gem 'bootstrap'
 
 gem 'rexml'
 
+gem 'ransack'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

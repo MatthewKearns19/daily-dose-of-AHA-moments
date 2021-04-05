@@ -6,13 +6,19 @@ class User < ApplicationRecord
   has_many :communities
   has_many :posts
   has_one :profile
+  has_many :courses
   validates_presence_of :username, :first_name, :last_name
   validates :username, length: {minimum: 6}
   validates_format_of :email,:with => Devise::email_regexp
+  after_create :build_profile
 
   def users_full_name
     # embeded name by string interpolation
     "#{first_name} #{last_name}"
+  end
+
+  def build_profile
+    Profile.create(user: self)
   end
 
 end

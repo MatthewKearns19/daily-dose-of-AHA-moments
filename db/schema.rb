@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_010032) do
+ActiveRecord::Schema.define(version: 2021_04_03_174537) do
 
   create_table "communities", force: :cascade do |t|
     t.integer "user_id"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2021_04_01_010032) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_communities_on_user_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "course_name"
+    t.string "course_description"
+    t.string "course_content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -37,11 +47,9 @@ ActiveRecord::Schema.define(version: 2021_04_01_010032) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "posts_id"
     t.string "profile_details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["posts_id"], name: "index_profiles_on_posts_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
