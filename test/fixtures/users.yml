@@ -5,21 +5,21 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  first_name:
+  first_name: MyString
   last_name: MyString
-  username: username
+  username:
   email: firstUniqueEmail@gmail.com
 
 two:
-  first_name: MyString
-  last_name:
+  first_name:
+  last_name: MyString
   username: user123
   email: SecondUniqueEmail@gmail.com
 
 three:
   first_name: MyString
-  last_name: MyString
-  username:
+  last_name:
+  username: username
   email: ThirdUniqueEmail@gmail.com
 
 four:
@@ -29,7 +29,7 @@ four:
   email: fourthEmail
 
 five:
-  first_name: MyString
-  last_name: MyString
+  first_name: testfirstname
+  last_name: testlastname
   username: testusername
   email: fifthUniqueEmail@gmail.com

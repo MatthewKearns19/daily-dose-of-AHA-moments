@@ -14,3 +14,13 @@ three:
   course_name: MyString
   course_description: MyString
   course_content:
+
+four:
+  course_name: testString
+  course_description: testDescription
+  course_content: testContent
+
+five:
+  course_name: newtestString
+  course_description: newtestDescription
+  course_content: newtestContent

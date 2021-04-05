@@ -7,11 +7,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     get "/users/sign_in"
-    sign_in users(:five)
-    @community = communities(:one)
+    @user = users(:five)
+    #sign_in users(:five)
+    login_as(@user, :scope => :user)
+    @user.communities = communities(:one)
 
     #stop teh test contiinuing if it fails on login
     assert_response :success
+  end
+
+  teardown do
+    Warden.test_reset!
   end
 
 end

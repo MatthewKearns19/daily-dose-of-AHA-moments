@@ -21,6 +21,8 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    @user = User.find(params[:user_id])
+    @course = @user.courses.find(params[:id])
   end
 
   # POST /courses or /courses.json
@@ -42,10 +44,13 @@ class CoursesController < ApplicationController
 
   # PATCH/PUT /courses/1 or /courses/1.json
   def update
+    @user = User.find(params[:user_id])
+    @course = @user.courses.find(params[:id])
+
     respond_to do |format|
       if @course.update(course_params)
-        format.html { redirect_to @course, notice: "Course was successfully updated." }
-        format.json { render :show, status: :ok, location: @course }
+        format.html { redirect_to user_course_path(@user, @course), notice: "Course was successfully updated." }
+        format.json { render :show, status: :ok, location:user_course_path(@user, @course) }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @course.errors, status: :unprocessable_entity }
@@ -55,9 +60,11 @@ class CoursesController < ApplicationController
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
+    @user = User.find(params[:user_id])
+    @course = @user.courses.find(params[:id])
     @course.destroy
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
+      format.html { redirect_to user_courses_path(@user), notice: "Course was successfully destroyed." }
       format.json { head :no_content }
     end
   end

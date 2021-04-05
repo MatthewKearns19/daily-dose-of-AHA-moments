@@ -1,15 +1,24 @@
 require "test_helper"
 
 class ProfileControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
 
   setup do
     get "/users/sign_in"
-    sign_in users(:five)
-    @community = communities(:one)
+    @user = users(:five)
+    login_as(@user, :scope => :user)
 
     #stop teh test contiinuing if it fails on login
     assert_response :success
   end
-  
+
+  test "can see the correct username on the profile page" do
+    get "/myprofile"
+    assert_select "h2", "My Profile"
+    assert_select "h6", "Username: testusername"
+  end
+
+  teardown do
+    Warden.test_reset!
+  end
+
 end

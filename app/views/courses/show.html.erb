@@ -1,13 +1,15 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
-  <strong>Course name:</strong>
-  <%= @course.course_name %>
+  <strong>Course name: <%= @course.course_name %></strong>
 </p>
 
 <p>
-  <strong>Course Description:</strong>
-  <%= @course.course_description %>
+  <strong>Course Description: <%= @course.course_description %></strong>
+</p>
+
+<p>
+  <strong>Course Content: <%= @course.course_content %></strong>
 </p>
 
 <%= link_to 'Edit', edit_user_course_path(@user, @course) %> |
