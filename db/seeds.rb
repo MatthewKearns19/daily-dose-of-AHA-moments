@@ -8,13 +8,20 @@
 
 Users = User.create([
   { id: '1',
+    first_name: 'Matthew',
+    last_name: 'Kearns',
+    username: 'TestUsername',
+    email: 'TestUsername@gmail.com',
+    password: 'mypassword'
+  },
+  { id: '2',
     first_name: 'John',
     last_name: 'Doe',
     username: 'JohnDoeIsTheBest',
     email: 'JohnDoeIsTheBest@gmail.com',
     password: 'mypassword'
   },
-  { id: '2',
+  { id: '3',
     first_name: 'Alex',
     last_name: 'Brute',
     username: 'AlexsUsernameBest',

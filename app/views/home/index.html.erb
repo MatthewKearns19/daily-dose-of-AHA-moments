@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row">
-      <p class="h4">Topics of Inspiration:</p>
+      <p class="h4">Topics of Inspiration <small>on <%= DateTime.now.to_s(:date_stamp)%></small></p>
     </div>
     <div class="row mt-4">
       <div class="list-group list-group-horizontal list-group-flush flex-md-row shadow">
@@ -26,11 +26,11 @@
   </div>
   <div class="row">
     <div class="col mt-4">
-      <p class="h1 mt-4">Aha feed:</p>
+      <p class="h1">Aha feed:</p>
     </div>
   </div>
-  <div class="row mt-4">
-    <div class="col-sm-8">
+  <div class="row">
+    <div class="col-sm-8 mt-1">
       <%= render partial: "posts/list", locals:{posts: @posts}%>
     </div>
     <div class="col-sm-4"">
