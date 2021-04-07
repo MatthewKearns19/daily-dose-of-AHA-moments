@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
     @client ||= Hackernews::Client.new
   end
 
+  # initialize top news articles
+  #def initialize_stories
+  #  @stories = client.topstories(0, 10).limit(4)
+  #end
+
 end

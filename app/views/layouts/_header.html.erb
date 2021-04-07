@@ -19,19 +19,19 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2 border" type="submit">Search</button>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       </form>
        <% if user_signed_in? %>
        <li class="nav-item">
-         <a class="nav-link float-right my-2"><%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn btn-outline-light") %></a>
+         <a class="nav-link float-right my-2"><%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "btn btn-outline-light border") %></a>
        </li>
        <% else %>
         <li>
-          <a class="nav-link float-right"><%= link_to('Log In', new_user_session_path, class: "btn btn-outline-light") %></a>
+          <a class="nav-link float-right"><%= link_to('Log In', new_user_session_path, class: "btn btn-outline-light border") %></a>
         </li>
         <li>
-          <a class="nav-link float-right"><%= link_to('Sign Up', new_user_registration_path, class: "btn btn-outline-light") %></a>
+          <a class="nav-link float-right"><%= link_to('Sign Up', new_user_registration_path, class: "btn btn-outline-light border") %></a>
         </li>
        <% end %>
      </div>

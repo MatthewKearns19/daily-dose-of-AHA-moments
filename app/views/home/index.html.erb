@@ -1,32 +1,32 @@
 <div class="container">
-  <div class="row">
-    <div class="col mt-4">
-      <p class="h7 float-right"><i>Welcome <%= current_user.users_full_name %></i></p>
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col mt-4">
+        <p class="h7 float-right"><i>Welcome <%= current_user.users_full_name %></i></p>
+      </div>
+    </div>
+    <div class="row">
+      <p class="h4">Topics of Inspiration:</p>
+    </div>
+    <div class="row mt-4">
+      <div class="list-group list-group-horizontal list-group-flush flex-md-row shadow">
+        <% @stories.each do |story| %>
+          <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <a class="mb-1" href="<%= story['url'] %>"><%= story['title'] %></a>
+            </div>
+            <small>Posted by <%= story['by'] %> <%= time_ago_in_words(story['time']) %> ago</small>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+    <%= link_to 'View all Topics of Inspiration', top_news_stories_path, class: "btn btn-outline-primary rounded border mt-4 mb-3" %>
     </div>
   </div>
   <div class="row">
     <div class="col mt-4">
-      <p class="h4">Topics of Inspiration</p>
-    </div>
-  </div>
-  <div class="row  mt-4">
-    <div class="col-sm-3">
-      Topics 1
-    </div>
-    <div class="col-sm-3">
-      Topics 2
-    </div>
-    <div class="col-sm-3">
-      Topics 3
-    </div>
-    <div class="col-sm-3">
-      Topics 4
-    </div>
-  </div>
-  <%= link_to 'View all Topics of Inspiration', top_news_stories_path, class: "btn btn-outline-primary mt-4" %>
-  <div class="row">
-    <div class="col mt-4">
-      <p class="h4">Aha feed:</p>
+      <p class="h1 mt-4">Aha feed:</p>
     </div>
   </div>
   <div class="row mt-4">
@@ -44,7 +44,7 @@
         </ul>
       </div>
       <%# link to community path in community -> index.html %>
-      <%= link_to "View All Communities", communities_path, class: "btn btn-outline-primary mt-4" %>
+      <%= link_to "View All Communities", communities_path, class: "btn btn-outline-primary rounded border mt-4" %>
     </div>
   </div>
 </div>
