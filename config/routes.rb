@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   #get "profile/:username/courses/new" => "courses#new", as: :new_course
 
   get "/topicsOfInspiration" => "inspiration#top", as: :top_news_stories
+  get 'topicsOfInspiration/:id', to: 'inspiration#topics_comments', as: :story_comments
 
   resources :communities do
     resources :posts
