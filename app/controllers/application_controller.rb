@@ -13,13 +13,16 @@ class ApplicationController < ActionController::Base
   end
 
   # initialize hacker news client in here so all controllers can have access to it
-  def client
-    @client ||= Hackernews::Client.new
+  def hacker_news_client
+    @hacker_news_client ||= Hackernews::Client.new
   end
 
-  # initialize top news articles
-  #def initialize_stories
-  #  @stories = client.topstories(0, 10).limit(4)
-  #end
+  def custom_latest_news_client
+    @custom_latest_news_client ||= Newscatcher::Client.new
+  end
+
+  def news_api
+    @news_api ||= Newsapi::Client.new
+  end
 
 end

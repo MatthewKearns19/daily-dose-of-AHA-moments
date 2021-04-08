@@ -32,6 +32,17 @@ gem 'httparty'
 
 gem 'excon'
 
+gem "openssl"
+
+gem 'net-http'
+
+gem 'news-api'
+
+gem 'open-uri'
+
+
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

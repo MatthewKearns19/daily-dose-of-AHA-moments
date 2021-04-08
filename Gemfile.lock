@@ -85,6 +85,7 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
+    date (3.1.0)
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -103,6 +104,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
+    io-wait (0.1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     listen (3.5.0)
@@ -124,9 +126,21 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_xml (0.6.0)
+    net-http (0.1.1)
+      net-protocol
+      uri
+    net-protocol (0.1.0)
+      io-wait
+      timeout
+    news-api (0.2.0)
     nio4r (2.5.7)
     nokogiri (1.11.2-x86_64-linux)
       racc (~> 1.4)
+    open-uri (0.1.0)
+      stringio
+      time
+      uri
+    openssl (2.2.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
     popper_js (1.16.0)
@@ -231,13 +245,18 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    stringio (3.0.0)
     thor (1.1.0)
     tilt (2.0.10)
+    time (0.1.0)
+      date
+    timeout (0.1.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    uri (0.10.1)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -274,6 +293,10 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  net-http
+  news-api
+  open-uri
+  openssl
   pg
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)

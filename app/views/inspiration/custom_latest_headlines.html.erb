@@ -2,20 +2,19 @@
   <div class="col-sm-12">
     <div class="row">
       <div class="col-sm-8 mt-1">
-        <p class="h1">All topics of Inspiration</p>
+        <p class="h1">Custom topics of Inspiration - latest <%= @topic %> headlines</p>
       </div>
     </div>
     <p class="mt-1 mb-1">on <%= DateTime.now.to_s(:date_stamp)%></p>
     <div class="row">
       <div class="col-sm-8 mt-1">
-        <% @stories.each do |story| %>
+        <% @headlines.each do |headline| %>
           <div class="card mt-3 shadow p-3 mb-1 bg-white rounded">
             <h5 class="mt-0 mb-1">
-              <a href="<%= story['url'] %>"><%= story['title'] %></a>
+              <a href="<%= headline['url'] %>"><%= headline['title'] %></a>
             </h5>
-            <p>by <%= story['by'] %>
-            <%= time_ago_in_words(story['time']) %> ago |
-            <%= link_to "#{story['descendants']} comments", story_comments_path(story['id']) %>
+            <p><%= time_ago_in_words(headline['time']) %> ago</p>
+            <p><%= headline['summary'] %></p>
           </div>
         <% end %>
       </div>
@@ -29,12 +28,12 @@
             value from the current value( i.e the new current value will be > 0
             once it is clicked once and this 'top' path is called again)-->
             <li class="page-item <%= 'disabled' if @start == 0 %>">
-              <%= link_to 'Previous', top_news_stories_path(start: @start - @per_page), class: 'page-link' %>
+              <%= link_to 'Previous', custom_latest_headlines_path(start: @start - @per_page), class: 'page-link' %>
             </li>
           </ul>
           <ul class="pagination float-right">
             <li class="page-item">
-              <%= link_to 'Next', top_news_stories_path(start: @start + @per_page), class: 'page-link' %>
+              <%= link_to 'Next', custom_latest_headlines_path(start: @start + @per_page), class: 'page-link' %>
             </li>
           </ul>
         </nav>
