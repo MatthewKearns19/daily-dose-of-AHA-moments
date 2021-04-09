@@ -8,14 +8,9 @@ module Newsapi
       #@url = 'https://newsapi.org/v2/top-headlines?category=business&apiKey=7ea1d39d716c490fa3f636cbb694beae'
     end
 
-    def item(id)
-      get("item/#{id}")
-    end
-
     def top_headings(start = @start, per_page = @per_page, topic = @custom_topic)
       headings = @newsapi.get_top_headlines(category: "#{topic}", language: "en", country: "us")[start...start + per_page]
-
-
+      
       headings
     end
 

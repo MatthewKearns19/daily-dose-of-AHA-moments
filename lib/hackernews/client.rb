@@ -1,3 +1,4 @@
+# source: 'https://rapidapi.com/community/api/hacker-news'
 module Hackernews
   class Client
     def initialize
@@ -6,6 +7,9 @@ module Hackernews
     #  @key = '732b68534emsh8689143e0b4b2e5p130765jsnd59cb1a075b7'
     end
 
+    #our api returns id's so we need to take this id from our origional response,
+    # re-run our request with the id extracted within the 'item' path,
+    # and parse that new json response to be our stories
     def item(id)
       get("item/#{id}")
     end

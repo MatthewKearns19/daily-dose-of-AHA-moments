@@ -25,10 +25,12 @@ class InspirationController < ApplicationController
     @per_page = (params[:per_page] || 10).to_i
     @per_page = [@per_page, 20].min # max 20 per page
 
+    @count = 0
     @topic = 'sport'
     @headlines = custom_latest_news_client.latest_headlines(@start, @per_page)
   end
 
+  # calls the third api:newsapi for customized topic requests
   def my_news_api
     @start = (params[:start] || 0).to_i
     @per_page = (params[:per_page] || 10).to_i

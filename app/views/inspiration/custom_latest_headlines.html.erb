@@ -9,13 +9,20 @@
     <div class="row">
       <div class="col-sm-8 mt-1">
         <% @headlines.each do |headline| %>
+          <!--We dont want to include the article if it is a reddit post with no comments-->
+          <% next if (headline['link'].include? "reddit") && (headline['summary'].include? "no comments") %>
           <div class="card mt-3 shadow p-3 mb-1 bg-white rounded">
             <h5 class="mt-0 mb-1">
-              <a href="<%= headline['url'] %>"><%= headline['title'] %></a>
+              <a href="<%= headline['link'] %>"><%= headline['title'] %></a>
             </h5>
-            <p><%= time_ago_in_words(headline['time']) %> ago</p>
-            <p><%= headline['summary'] %></p>
+            <p> Topic: <%= headline['topic'] %> | Country of origin: <%= headline['country'] %> | Published: <%= headline['published_date'] %></p>
+            <!--We dont want to include the summary heading if there is no summary-->
+            <% if headline['summary'] != "" %>
+              <strong>Summary:</strong>
+              <p><%= headline['summary'] %></p>
+            <% end %>
           </div>
+          <% @count = @count + 1 %>
         <% end %>
       </div>
     </div>
@@ -31,8 +38,9 @@
               <%= link_to 'Previous', custom_latest_headlines_path(start: @start - @per_page), class: 'page-link' %>
             </li>
           </ul>
+          <!--Since we are showing 10 per page, this is disabled if the @headlines json array is less than 10-->
           <ul class="pagination float-right">
-            <li class="page-item">
+            <li class="page-item <%= 'disabled' if @count < 10 %>">
               <%= link_to 'Next', custom_latest_headlines_path(start: @start + @per_page), class: 'page-link' %>
             </li>
           </ul>
