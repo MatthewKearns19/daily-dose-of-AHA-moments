@@ -10,8 +10,8 @@ module Newscatcher
       @key = "732b68534emsh8689143e0b4b2e5p130765jsnd59cb1a075b7"
     end
 
-    def latest_headlines(start = @start, per_page = @start, expand = true )
-      articles = get('latest_headlines')[start...start + per_page]
+    def latest_articles(start = @start, per_page = @start, topic = @custom_topic)
+      articles = get(topic)[start...start + per_page]
 
 
       articles
@@ -19,9 +19,9 @@ module Newscatcher
 
     private
 
-    def get(path)
+    def get(topic)
       #url = URI("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=tech&lang=en&media=True.json?print=pretty")
-      url = URI("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=tech&lang=en&media=True.json?print=pretty")
+      url = URI("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{topic}" + "&lang=en&media=True.json?print=pretty")
 
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true

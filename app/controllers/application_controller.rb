@@ -17,12 +17,12 @@ class ApplicationController < ActionController::Base
     @hacker_news_client ||= Hackernews::Client.new
   end
 
-  def custom_latest_news_client
-    @custom_latest_news_client ||= Newscatcher::Client.new
+  def custom_newscatcher_client
+    @custom_newscatcher_client ||= Newscatcher::Client.new
   end
 
-  def news_api
-    @news_api ||= Newsapi::Client.new
+  def custom_newsapi_client
+    @custom_newsapi_client ||= Newsapi::Client.new
   end
 
 end

@@ -25,9 +25,10 @@ Rails.application.routes.draw do
   get "/topicsOfInspiration" => "inspiration#news_topics", as: :top_news_stories
   get '/topicsOfInspiration/:id', to: 'inspiration#news_topics_comments', as: :story_comments
 
-  get '/customizedTopicsOfInspiration', to: 'inspiration#custom_latest_headlines', as: :custom_latest_headlines
-
-  get '/newsapi', to: 'inspiration#my_news_api', as: :my_news_api
+  # uses our 'newscatcher' api
+  get '/customizedTopicsOfInspiration/:custom_topic', to: 'inspiration#custom_latest_articles', as: :custom_latest_articles
+  # uses our 'newsapi' api
+  get '/newsapi/:custom_topic', to: 'inspiration#custom_latest_headlines', as: :custom_latest_headlines
 
   resources :communities do
     resources :posts

@@ -4,11 +4,11 @@ class InspirationController < ApplicationController
   # value is added or subtracted from the current value( i.e the new current
   # value will be > 0 once clicked once and this 'top' path is called again)
   def news_topics
-    @start = (params[:start] || 0).to_i
-    @per_page = (params[:per_page] || 10).to_i
-    @per_page = [@per_page, 20].min # max 20 per page
-
+    @start = (params[:start] || 0).to_i # convert to an integer
+    @per_page = (params[:per_page] || 10).to_i # convert to an integer
+    @count = 0
     @stories = hacker_news_client.topstories(@start, @per_page)
+    #@this_is_default_view = 'present'
   end
 
   # retrieves the comments of news_topics
@@ -19,27 +19,28 @@ class InspirationController < ApplicationController
     end
   end
 
-  # calls the second api:newsscratcher for customized topic requests
-  def custom_latest_headlines
-    @start = (params[:start] || 0).to_i
-    @per_page = (params[:per_page] || 10).to_i
-    @per_page = [@per_page, 20].min # max 20 per page
+  # calls the second api:newscatcher for customized topic requests
+  def custom_latest_articles
+    @start = (params[:start] || 0).to_i # convert to an integer
+    @per_page = (params[:per_page] || 10).to_i # convert to an integer
 
     @count = 0
-    @topic = 'sport'
-    @headlines = custom_latest_news_client.latest_headlines(@start, @per_page)
+    @custom_topic = params[:custom_topic]
+    @articles = custom_newscatcher_client.latest_articles(@start, @per_page, @custom_topic)
   end
 
   # calls the third api:newsapi for customized topic requests
-  def my_news_api
-    @start = (params[:start] || 0).to_i
-    @per_page = (params[:per_page] || 10).to_i
-    @per_page = [@per_page, 20].min # max 20 per page
+  def custom_latest_headlines
+    @start = (params[:start] || 0).to_i # convert to an integer
+    @per_page = (params[:per_page] || 10).to_i # convert to an integer
 
+    @count = 0 # temporarily disdable @is_remaining to save our requests while developing
+    # full breakdown of 'is_remaining' in lib -> my_news_api -> client
+    #@is_remaining = news_api.headlines_count(@start, @per_page)
     # testing the category within the request, to be cleaned up later to allow
     # category requests by the user within teh app
-    @custom_topic = 'business'
-    @headings = news_api.top_headings(@start, @per_page, @custom_topic)
+    @custom_topic = params[:custom_topic]
+    @headlines = custom_newsapi_client.top_headlines(@start, @per_page, @custom_topic)
   end
 
 end
