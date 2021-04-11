@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  root to: "home#index"
+
   #resources :users do
   #  resources :profile, only: [:index, :edit, :create]
   #end
@@ -16,6 +18,12 @@ Rails.application.routes.draw do
     resources :courses
   end
 
+  resources :communities do
+    resources :posts
+  end
+
+  get "/search", to: "communities#search"
+
   # generated CRUD functionality with a scaffold, but I only wanted one profile per user,
   # this relationship is established and I thopught it was clearer navigation to now have the user/profile/course if's within the URL.
   #get "profile/:username/courses" => "courses#index", as: :all_courses
@@ -28,12 +36,7 @@ Rails.application.routes.draw do
   # uses our 'newscatcher' api
   get '/customizedTopicsOfInspiration/:custom_topic', to: 'inspiration#custom_latest_articles', as: :custom_latest_articles
   # uses our 'newsapi' api
-  get '/newsapi/:custom_topic', to: 'inspiration#custom_latest_headlines', as: :custom_latest_headlines
+  get '/customTopicOfInspiration/:custom_topic', to: 'inspiration#custom_latest_headlines', as: :custom_latest_headlines
 
-  resources :communities do
-    resources :posts
-  end
-
-  root to: "home#index"
 
 end

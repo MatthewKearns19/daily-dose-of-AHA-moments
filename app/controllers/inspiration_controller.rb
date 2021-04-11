@@ -1,5 +1,5 @@
-class InspirationController < ApplicationController
-  #bootstrapped vanigation bar to load 20 API calls per page( max =20). Previous
+class InspirationController < ClientsController
+  #bootstrapped panigation nav bar to load 20 API calls per page( max =20). Previous
   #page is disabled when the current start=0, and then the current per page
   # value is added or subtracted from the current value( i.e the new current
   # value will be > 0 once clicked once and this 'top' path is called again)
@@ -36,7 +36,7 @@ class InspirationController < ApplicationController
 
     @count = 0 # temporarily disdable @is_remaining to save our requests while developing
     # full breakdown of 'is_remaining' in lib -> my_news_api -> client
-    #@is_remaining = news_api.headlines_count(@start, @per_page)
+    #@is_remaining = custom_newsapi_client.headlines_count(@start, @per_page)
     # testing the category within the request, to be cleaned up later to allow
     # category requests by the user within teh app
     @custom_topic = params[:custom_topic]

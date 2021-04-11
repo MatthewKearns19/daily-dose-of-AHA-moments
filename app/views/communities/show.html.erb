@@ -1,7 +1,7 @@
 <%= link_to "Create New Post", new_community_post_path(@community), class: "btn btn-outline-primary float-right" %>
 
-<h1>Community name -<%= @community.name %></h1>
+<h2>Community name - <%= @community.name %></h2>
 <p class="mt-0"><%= simple_format @community.description %></p>
 <h4>Most purchased courses in this community:</h4>
-<h4 class="mb-0">latest posts:</h4>
+<h4 class="mb-0">Latest posts:</h4>
 <%= render partial: "posts/list", locals:{posts: @posts}%>

@@ -25,6 +25,16 @@ before_action :set_community, only: [:show]
       end
   end
 
+  def search
+    # replace placeholder with the queried (:q) params
+    @community = Community.where("name LIKE?", "%" + params[:query] + "%").first
+    if @community
+      redirect_to community_path(@community.id)
+    else
+      redirect_to communities_path, alert: "No Community found"
+    end
+  end
+
   private
 
   def set_community

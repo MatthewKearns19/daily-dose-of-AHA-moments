@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2021_04_03_174537) do
     t.integer "community_id"
     t.string "title"
     t.text "body"
-    t.integer "total_discussions", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["community_id"], name: "index_posts_on_community_id"

@@ -17,6 +17,7 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  # after creation above...build profile
   def build_profile
     Profile.create(user: self)
   end

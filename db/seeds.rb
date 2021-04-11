@@ -10,8 +10,8 @@ Users = User.create([
   { id: '1',
     first_name: 'Matthew',
     last_name: 'Kearns',
-    username: 'TestUsername',
-    email: 'TestUsername@gmail.com',
+    username: 'MatthewsUsername',
+    email: 'aha@gmail.com',
     password: 'mypassword'
   },
   { id: '2',
@@ -22,33 +22,44 @@ Users = User.create([
     password: 'mypassword'
   },
   { id: '3',
+    first_name: 'John',
+    last_name: 'Doe',
+    username: 'JohnDoeIsTheBest',
+    email: 'TestUsername@gmail.com',
+    password: 'mypassword'
+  },
+  { id: '4',
     first_name: 'Alex',
     last_name: 'Brute',
-    username: 'AlexsUsernameBest',
+    username: 'AlexsUsername',
     email: 'Alex@gmail.com',
     password: 'testpassword' }])
 
 Commutities = Community.create([
-  { name: 'Movie Enthusiasts',
+  { id: '1',
+    name: 'Movie Enthusiasts',
     url: 'MovieEnthusiasts',
     description: 'This community is about Film, any Movie genre and any
     language, we want to hear about it all!',
     user_id: '1'
   },
-  { name: 'Adventure',
+  { id: '2',
+    name: 'Adventure',
     url: 'AdventureCommunity',
     description: 'This community is about all things outdoors related, sharing
      jobs, travel, nature, and earthy adventures',
     user_id: '1'
   },
-  { name: 'Programming',
+  { id: '3',
+    name: 'Programming',
     url: 'ProgrammingCommunity',
     description: 'Lets explore programming together. Post all programming
     related content. News, jobs, personal projects, ideas, and events. Please
     keep it ethical (and no Memes!)',
     user_id: '1'
   },
-  { name: 'Wildlife101',
+  { id: '4',
+    name: 'Wildlife101',
     url: 'Wildlife101Community',
     description: 'Have you ever been to a Safari? How about a Rainforrest? Well
      I havent :P so please share any cool Wildlife related content. This will be
@@ -56,13 +67,15 @@ Commutities = Community.create([
      exploration training ect. ect. ect. Have fun!',
     user_id: '1'
   },
-  { name: 'Real Estate',
+  { id: '5',
+    name: 'Real Estate',
     url: 'RealEstateCommunity',
     description: 'This is a community for sharing Real Estate related
     views/topics/courses/jobs. Have fun, make friends, and keep it ethical!',
     user_id: '2'
   },
-  { name: 'Space',
+  { id: '6',
+    name: 'Space',
     url: 'SpaceCommunity',
     description: 'This community is about Space...Yes, that big unknown that we
      know is always there but not enough people think about it, or
@@ -74,7 +87,7 @@ Commutities = Community.create([
     user_id: '2' }])
 
 Posts = Post.create([
-  { title: 'The right people with teh right code',
+  { title: 'The right people with the right code',
     body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
     blandit turpis vitae consequat condimentum. Phasellus erat sem, vulputate at
      arcu quis, pellentesque fermentum turpis. In dapibus arcu dolor, vitae
@@ -89,9 +102,9 @@ Posts = Post.create([
        mauris dui. Vestibulum ac augue vitae eros dictum tempor. Vestibulum eu
        pharetra arcu.',
     user_id: '1',
-    community_id: '2',
+    community_id: '3',
   },
   { title: 'Ruby on Rails architecture',
     body: 'Ruby Ruby Ruby Rubayyy',
     user_id: '1',
-    community_id: '2' }])
+    community_id: '3' }])

@@ -5,7 +5,6 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.references :community
       t.string :title
       t.text :body
-      t.integer :total_discussions, default: 0
 
       t.timestamps
     end
