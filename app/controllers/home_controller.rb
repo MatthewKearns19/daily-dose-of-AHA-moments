@@ -1,4 +1,12 @@
 class HomeController < ApplicationController
+  before_action :set_breadcrumbs
+
+  def ping
+  end
+
+  def pong
+  end
+
   def index
     @communities = Community.all.limit(5)
     @posts = Post.order(id: :desc).limit(10)
@@ -7,10 +15,8 @@ class HomeController < ApplicationController
 
   def set_cookie
     @user = User.find(current_user.id)
-    #cookies[:email] = @user.email
-    #cookies[:password] = @user.password
-    cookies[:first_name] = @user.first_name
-    cookies[:last_name] = @user.first_name
+    cookies.permanent.signed[:first_name] = @user.first_name
+    cookies.permanent.signed[:last_name] = @user.last_name
   end
 
   def show_cookie
@@ -24,5 +30,26 @@ class HomeController < ApplicationController
     cookies.delete :last_name
   end
 
+  def reset
+    reset_session
+    @breadcrumbs = nil
+  end
+
+  private
+  def set_breadcrumbs
+    if session[:breadcrumbs]
+      @breadcrumbs = session[:breadcrumbs]
+    else
+      @breadcrumbs = Array.new
+    end
+
+    @breadcrumbs.push(request.url)
+
+    if @breadcrumbs.count > 4
+      @breadcrumbs.shift
+    end
+
+    session[:breadcrumbs] = @breadcrumbs
+  end
 
 end

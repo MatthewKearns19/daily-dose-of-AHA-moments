@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
+  get "/set_cookie", to: "home#set_cookie"
+  get "/show_cookie", to: "home#show_cookie"
+
   #resources :users do
   #  resources :profile, only: [:index, :edit, :create]
   #end
