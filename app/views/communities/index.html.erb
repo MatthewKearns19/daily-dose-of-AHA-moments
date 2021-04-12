@@ -1,16 +1,37 @@
-<div>
-  <%= link_to "Create New Community", new_community_path, class: "btn btn-outline-primary" %>
-</div>
-<% if @communities.size > 0 %>
-  <% @communities.each do|community| %>
-    <div class="card mt-4">
-      <h3>
-        <%= link_to community.name, community %>
-      </h3>
-      <%# simple_format for paragraph %>
-      <%= simple_format community.description %>
+<div class="container">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-6 mt-1 ml-3">
+        <p class="h2">All Communities</p>
+      </div>
     </div>
-  <% end %>
-<% else %>
-  <p>No Commutities Created</p>
-<% end %>
+    <div class="row mt-2 mb-1">
+      <div class="col-sm-7 ml-3">
+          <%= search_form_for @q do |f| %>
+            <p class="mb-1">Filter Communities by name:</p>
+            <%= f.search_field :name_cont %>
+            <%= f.submit %>
+          <% end %>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to "Create New Community", new_community_path, class: "btn btn-outline-primary float-right mt-3 mb-0 mr-4" %>
+      </div>
+    </div>
+    <div class="col-sm-10 mt-1">
+      <% if @communities.size > 0 %>
+
+        <% @communities.each do|community| %>
+          <div class="card mt-3 shadow p-3 mb-1 bg-white rounded">
+            <h5 class="mt-0 mb-1">
+              <%= link_to community.name, community %>
+            </h5>
+            <%# simple_format for paragraph %>
+            <%= simple_format community.description %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>No Commutities Created</p>
+      <% end %>
+    </div>
+  </div>
+</div>

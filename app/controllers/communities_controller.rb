@@ -3,7 +3,9 @@ class CommunitiesController < ApplicationController
 before_action :set_community, only: [:show]
 
   def index
-    @communities = Community.all
+    @q = Community.ransack(params[:q])
+    @communities = @q.result(distinct: true)
+    #@communities = Community.all
   end
 
   def show

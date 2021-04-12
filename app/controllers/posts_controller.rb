@@ -2,12 +2,12 @@ class PostsController < ApplicationController
   #before_action :set_post, only: %i[ show edit update destroy ]
   before_action :set_post, only: %i[ :show ]
 
-  # GET community/1/posts or /posts.json
+  # GET community/1/posts or community/posts.json
   def index
     @posts = Post.all
   end
 
-  # GET community/1/posts/1 or /posts/1.json
+  # GET community/1/posts/1 or community/posts/1.json
   def show
     @community = Community.find(params[:community_id])
     @post = @community.posts.find(params[:id])
