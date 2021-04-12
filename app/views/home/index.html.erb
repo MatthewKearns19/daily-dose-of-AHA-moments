@@ -21,9 +21,10 @@
       </div>
     </div>
     <div class="row">
-    <%= link_to 'View more Topics of Inspiration', top_news_stories_path, class: "btn btn-outline-primary rounded border mt-4 mb-3" %>
+      <%= link_to 'View more Topics of Inspiration', top_news_stories_path, class: "btn btn-outline-primary rounded border mt-4 mb-3" %>
     </div>
   </div>
+  <hr class="mt-1 mb-3">
   <div class="row">
     <div class="col mt-4">
       <p class="h1">Aha feed:</p>
@@ -33,7 +34,7 @@
     <div class="col-sm-8 mt-1">
       <%= render partial: "posts/list", locals:{posts: @posts}%>
     </div>
-    <div class="col-sm-4"">
+    <div class="col-sm-4">
       <p class="h4 mt-3">Communities</p>
 
       <div class="card shadow">

@@ -1,4 +1,31 @@
-#show the new post
-<%= @post.title %>
-
-<p><%= simple_format @post.body %></p>
+<div class="container">
+  <div class="col-sm-12">
+    <div class="row mt-4">
+    </div>
+    <div class="row">
+      <div class="col-sm-0 mt-1">
+      </div>
+      <div class="col-sm-8 mt-1">
+        <div class="card mt-3 mb-4 shadow p-3 mb-1 bg-white rounded">
+          <h5 class="mt-0 mb-1">
+            <div class="row">
+              <div class="col-sm-6">
+                <strong class="h3"><%= @post.title %></strong>
+              </div>
+            </div>
+          </h5>
+          <p><%= simple_format @post.body %></p>
+        </div>
+      </div>
+      <div class="col-sm-4 mt-1 mb-1">
+        <div class="row mt-3 mb-0">
+          <%= link_to 'Edit Post ', edit_community_post_path(@post.community_id, @post), class: "btn btn-outline-primary rounded border mr-2" %>
+          <%= link_to ' Delete Post', community_post_path(@post.community_id, @post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-primary rounded border ml-2" %>
+        </div>
+        <div class="row mt-4 mb-0">
+          <h5>Posted in <%= link_to @post.community.name, community_path(@post.community) %></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

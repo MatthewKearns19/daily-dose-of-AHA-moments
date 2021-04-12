@@ -1,9 +1,9 @@
 # This is a user's profile page controller
 class ProfileController < ApplicationController
-  def index
-    #@user = User.findby_username!(params[:user_id])
+  #def index
+    #@user = User.find_by_username!(params[:user_id])
     #@posts = @profile.posts
-  end
+  #end
 
   def show
     # return 404 if username cant be found
@@ -24,8 +24,8 @@ class ProfileController < ApplicationController
   end
 
   # this is only for creating a profile which is called
-  # directly after a user is created. This is because
-  # I want each user to only have one profile. So it is
+  # directly after a user is created in user.rb as I
+  # want each user to only have one profile. So it is
   # not available to be called elswhere
   def create
     @user = User.new(user_params)

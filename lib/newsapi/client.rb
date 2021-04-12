@@ -14,9 +14,9 @@ module Newsapi
     # there were exactly 10 displaying yet no remaining articles to retrieve from our api then this count would not disable
     # the 'next page' button. This approach below returns int=11 (10+1) for each itteration of our pagnation, which is
     # valid as we set 10 per page and added 1, so anything less than 11 the 'next page' button will be disabled
-    def headlines_count(start = @start, per_page = @per_page)
+    def headlines_count(start = @start, per_page = @per_page, topic = @custom_topic)
       page = per_page + 1
-      headlines = @newsapi.get_top_headlines(category: "business", language: "en", country: "us")[start...start + page]
+      headlines = @newsapi.get_top_headlines(category: "#{topic}", language: "en", country: "us")[start...start + page]
 
       is_remaining = headings.size
 

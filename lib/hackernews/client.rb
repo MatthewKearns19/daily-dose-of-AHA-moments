@@ -1,6 +1,9 @@
 # source: 'https://rapidapi.com/community/api/hacker-news'
+require 'singleton'
 module Hackernews
   class Client
+    include Singleton
+
     def initialize
       @host = 'hacker-news.firebaseio.com/v0'
     #  @host = 'community-hacker-new-v1.p.rapidapi.com'

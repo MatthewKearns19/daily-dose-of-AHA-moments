@@ -12,9 +12,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up , keys: [:first_name, :last_name, :username])
   end
 
-  # initialize hacker news client in here so all controllers can have access to it
+  # initialize hacker news client in here so all controllers can have access to it.
+  # needed in the home controller for the latest 4 topics quick-view display
   def hacker_news_client
-    @hacker_news_client ||= Hackernews::Client.new
+    @hacker_news_client ||= Hackernews::Client.instance
   end
 
   def custom_newscatcher_client

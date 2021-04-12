@@ -143,6 +143,7 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.2-x86_64-linux)
       racc (~> 1.4)
+    observer (0.1.1)
     open-uri (0.1.0)
       stringio
       time
@@ -303,6 +304,7 @@ DEPENDENCIES
   listen (~> 3.3)
   net-http
   news-api
+  observer
   open-uri
   openssl
   pg

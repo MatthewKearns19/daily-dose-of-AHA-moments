@@ -1,4 +1,4 @@
-class InspirationController < ClientsController
+class InspirationController < ApplicationController
   #bootstrapped panigation nav bar to load 20 API calls per page( max =20). Previous
   #page is disabled when the current start=0, and then the current per page
   # value is added or subtracted from the current value( i.e the new current
@@ -26,7 +26,9 @@ class InspirationController < ClientsController
 
     @count = 0
     @custom_topic = params[:custom_topic]
-    @articles = custom_newscatcher_client.latest_articles(@start, @per_page, @custom_topic)
+    @url_query = languageURLConstructor.add_
+     "topic=" + "#{topic}" + "&lang=en"
+    @articles = custom_newscatcher_client.latest_articles(@start, @per_page, @custom_topic, @url_query)
   end
 
   # calls the third api:newsapi for customized topic requests
@@ -34,12 +36,12 @@ class InspirationController < ClientsController
     @start = (params[:start] || 0).to_i # convert to an integer
     @per_page = (params[:per_page] || 10).to_i # convert to an integer
 
+    @custom_topic = params[:custom_topic]
+
     @count = 0 # temporarily disdable @is_remaining to save our requests while developing
     # full breakdown of 'is_remaining' in lib -> my_news_api -> client
-    #@is_remaining = custom_newsapi_client.headlines_count(@start, @per_page)
-    # testing the category within the request, to be cleaned up later to allow
-    # category requests by the user within teh app
-    @custom_topic = params[:custom_topic]
+    #@is_remaining = custom_newsapi_client.headlines_count(@start, @per_page, @custom_topic)
+    
     @headlines = custom_newsapi_client.top_headlines(@start, @per_page, @custom_topic)
   end
 
