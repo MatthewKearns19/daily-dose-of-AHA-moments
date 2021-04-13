@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     @stories = hacker_news_client.topstories(0, 4)
     @user = current_user
     decorated_user = Decorateduser.new(@user)
-    @decorated_name = decorated_user.users_full_name
+    @decorated_name = decorated_user.name_with_initial
   end
 
   def set_cookie

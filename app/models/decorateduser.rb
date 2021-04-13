@@ -12,4 +12,8 @@ class Decorateduser
   def users_full_name
     "#{@user.first_name} #{@user.last_name}"
   end
+
+  def name_with_initial
+    "#{(@user.first_name).first}.#{@user.last_name}"
+  end
 end
