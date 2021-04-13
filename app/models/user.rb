@@ -12,11 +12,6 @@ class User < ApplicationRecord
   validates_format_of :email,:with => Devise::email_regexp
   after_create :build_profile
 
-  def users_full_name
-    # embeded name by string interpolation
-    "#{first_name} #{last_name}"
-  end
-
   # after creation above...build profile
   def build_profile
     Profile.create(user: self)
