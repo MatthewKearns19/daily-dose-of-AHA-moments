@@ -8,7 +8,7 @@ class ProfileController < ApplicationController
   def show
     # return 404 if username cant be found
     @user = User.find(params[:user_id])
-    decorated_user = DecoratedUser.new(@user)
+    decorated_user = Decorateduser.new(@user)
     @decorated_name = decorated_user.users_full_name
     @posts = @user.posts
     @courses = @user.courses
@@ -17,7 +17,7 @@ class ProfileController < ApplicationController
 
   def current_user_profile
     @user = User.find(current_user.id)
-    decorated_user = DecoratedUser.new(@user)
+    decorated_user = Decorateduser.new(@user)
     @decorated_name = decorated_user.users_full_name
     @posts = @user.posts
     @courses = @user.courses

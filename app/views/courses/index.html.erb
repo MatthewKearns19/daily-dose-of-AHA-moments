@@ -1,14 +1,24 @@
 <div class="row">
   <div class="col-sm-8 mt-4 mb-0">
-    <% if @courses.size > 0 %>
-      <h2>All courses of <%= @user.username %></h2>
+    <% if @user == current_user %>
+      <% if @courses.size > 0 %>
+        <h2>These are all of your available courses <%= @user.first_name %></h2>
+      <% else %>
+        <h3><%= @user.first_name %>, you have no courses, click new course if you would liek to create one</h3>
+      <% end %>
     <% else %>
-      <h3>Sorry <%= @user.username %> has no courses</h3>
+      <% if @courses.size > 0 %>
+        <h2>All courses of <%= @user.username %></h2>
+      <% else %>
+        <h3>Sorry, <%= @user.username %> has no courses. Keep an eye out for upcoming courses</h3>
+      <% end %>
     <% end %>
   </div>
   <div class="col-sm-4">
     <div>
-      <%= link_to 'New Course', new_user_course_path(@user), class: "btn btn-outline-primary" %>
+      <% if @user == current_user %>
+        <%= link_to 'New Course', new_user_course_path(@user), class: "btn btn-outline-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

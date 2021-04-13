@@ -1,12 +1,13 @@
 <div class="row">
-    <div class="col-sm-8">
-      <h2>My Profile</h2>
-      <h6 class="mt-4 mb-0">Username: <%= @user.username %></h6>
-      <h6 class="mt-4 mb-0">Name: <%= @decorated_name %></h6>
-      <%= render partial: "posts/list", locals:{posts: @posts}%>
+  <div class="col-sm-8">
+    <h2>My Profile</h2>
+    <h6 class="mt-4 mb-0">Username: <%= @user.username %></h6>
+    <h6 class="mt-4 mb-0">Name: <%= @decorated_name %></h6>
+    <%= render partial: "posts/list", locals:{posts: @posts}%>
 
-    </div>
-    <div class="col-sm-4">
+  </div>
+  <div class="col-sm-4 mt-2">
+    <% if @courses.size > 0 %>
       <p class="h5">My Courses</p>
       <div class="card shadow">
         <ul class="list-group list-group-flush">
@@ -15,6 +16,7 @@
           <% end %>
         </ul>
       </div>
-      <%= link_to "View All Courses", user_courses_path(@user), class: "btn btn-outline-primary mt-4" %>
-    </div>
+    <% end %>
+    <%= link_to "View All Courses", user_courses_path(@user), class: "btn btn-outline-primary mt-4" %>
+  </div>
 </div>
