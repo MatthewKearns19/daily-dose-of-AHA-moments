@@ -11,6 +11,9 @@ class HomeController < ApplicationController
     @communities = Community.all.limit(5)
     @posts = Post.order(id: :desc).limit(30)
     @stories = hacker_news_client.topstories(0, 4)
+    @user = current_user
+    decorated_user = Decorateduser.new(@user)
+    @decorated_name = decorated_user.users_full_name
   end
 
   def set_cookie

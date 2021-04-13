@@ -2,6 +2,8 @@
 require 'uri'
 require 'net/http'
 require 'openssl'
+# custom gem to de-couple the request setup and response from the this client class
+require 'basenewscatcherbuilder'
 
 module Newscatcher
   class Client
@@ -21,21 +23,10 @@ module Newscatcher
 
     def get(topic)
       #url = URI("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=tech&lang=en&media=True.json?print=pretty")
-      url = URI("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{topic}" + "&lang=en&media=True.json?print=pretty")
+      @url = "https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{topic}" + "&lang=en&media=True.json?print=pretty"
+      
+      headings = NewscatcherBase.runrequest(@host, @key, @url)
 
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-      request = Net::HTTP::Get.new(url)
-      request["x-rapidapi-key"] = @key
-      request["x-rapidapi-host"] = @host
-
-      response = http.request(request)
-
-      headings = JSON.parse(response.read_body)
-
-      puts headings['articles']
 
       articles = headings['articles']
 

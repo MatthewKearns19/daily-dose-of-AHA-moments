@@ -26,9 +26,7 @@ class InspirationController < ApplicationController
 
     @count = 0
     @custom_topic = params[:custom_topic]
-    @url_query = languageURLConstructor.add_
-     "topic=" + "#{topic}" + "&lang=en"
-    @articles = custom_newscatcher_client.latest_articles(@start, @per_page, @custom_topic, @url_query)
+    @articles = custom_newscatcher_client.latest_articles(@start, @per_page, @custom_topic)
   end
 
   # calls the third api:newsapi for customized topic requests
@@ -41,7 +39,7 @@ class InspirationController < ApplicationController
     @count = 0 # temporarily disdable @is_remaining to save our requests while developing
     # full breakdown of 'is_remaining' in lib -> my_news_api -> client
     #@is_remaining = custom_newsapi_client.headlines_count(@start, @per_page, @custom_topic)
-    
+
     @headlines = custom_newsapi_client.top_headlines(@start, @per_page, @custom_topic)
   end
 

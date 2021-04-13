@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   # initialize hacker news client in here so all controllers can have access to it.
   # needed in the home controller for the latest 4 topics quick-view display
   def hacker_news_client
+    # using .instance to declare singleton instance
     @hacker_news_client ||= Hackernews::Client.instance
   end
 

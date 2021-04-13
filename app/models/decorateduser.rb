@@ -2,7 +2,7 @@
 # this class to become a decorator and any other decorations
 # to become decoupled from user.rb, to become closed yet open
 # for extention elswhere
-class DecoratedUser
+class Decorateduser
   attr_reader :user
 
   def initialize(user)
@@ -10,6 +10,6 @@ class DecoratedUser
   end
 
   def users_full_name
-    "#{user.first_name} #{user.last_name}"
+    "#{@user.first_name} #{@user.last_name}"
   end
 end

@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'observer'
 
+gem 'delegate'
+
 gem 'activerecord-session_store'
 
 gem 'bootstrap'
@@ -43,6 +45,9 @@ gem 'net-http'
 gem 'news-api'
 
 gem 'open-uri'
+
+# custom gem
+gem 'basenewscatcherbuilder'
 
 
 

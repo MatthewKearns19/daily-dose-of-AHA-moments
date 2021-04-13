@@ -70,6 +70,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.2.4.0)
       execjs
+    basenewscatcherbuilder (0.0.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.3)
@@ -92,6 +93,7 @@ GEM
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     date (3.1.0)
+    delegate (0.2.0)
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -293,10 +295,12 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-session_store
+  basenewscatcherbuilder
   bootsnap (>= 1.4.4)
   bootstrap
   byebug
   capybara (>= 3.26)
+  delegate
   devise
   excon
   httparty
