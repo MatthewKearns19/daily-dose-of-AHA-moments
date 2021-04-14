@@ -30,13 +30,13 @@ module Regionaldecorator
 
   ################# Language Decorators ############
 
-  class EnglishLanguageDecorator < RegionalDelegator
+  class EnglishDecorator < RegionalDelegator
     def construct_url(url)
       @url.construct_url("#{url}&lang=en")
     end
   end
 
-  class GermanLanguageDecorator < RegionalDelegator
+  class GermanDecorator < RegionalDelegator
     def construct_url(url)
       @url.construct_url("#{url}&lang=de")
     end

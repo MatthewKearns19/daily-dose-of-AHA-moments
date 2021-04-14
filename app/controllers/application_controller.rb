@@ -27,10 +27,4 @@ class ApplicationController < ActionController::Base
     @custom_newsapi_client ||= Newsapi::Client.new
   end
 
-
-  def decorated_url
-    @decorated_url ||= Regionaldecorator::Englishlanguagedecorator.new(Regionaldecorator::Unitedstatesdecorator.new(Regionaldecorator::Urlconstructor.new))
-  end
-
-
 end
