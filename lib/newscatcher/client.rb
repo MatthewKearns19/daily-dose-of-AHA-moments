@@ -1,7 +1,5 @@
-# source = 'https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/newscatcher'
-require 'uri'
-require 'net/http'
-require 'openssl'
+# source of api used in this class = 'https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/newscatcher'
+
 # custom gem to de-couple the request setup and response from the this client class
 require 'basenewscatcherbuilder'
 
@@ -12,8 +10,8 @@ module Newscatcher
       @key = "732b68534emsh8689143e0b4b2e5p130765jsnd59cb1a075b7"
     end
 
-    def latest_articles(start = @start, per_page = @start, topic = @custom_topic)
-      articles = get(topic)[start...start + per_page]
+    def latest_articles(start = @start, per_page = @start, query = @query)
+      articles = get(query)[start...start + per_page]
 
 
       articles
@@ -21,10 +19,10 @@ module Newscatcher
 
     private
 
-    def get(topic)
-      #url = URI("https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=tech&lang=en&media=True.json?print=pretty")
-      @url = "https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{topic}" + "&lang=en&media=True.json?print=pretty"
-      
+    def get(query)
+      @url = "https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{query}" + "&media=True.json?print=pretty"
+
+      # send to custom gem
       headings = NewscatcherBase.runrequest(@host, @key, @url)
 
 

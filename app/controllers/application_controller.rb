@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up , keys: [:first_name, :last_name, :username])
   end
 
-  # initialize hacker news client in here so all controllers can have access to it.
-  # needed in the home controller for the latest 4 topics quick-view display
+  # initialize clients in here so controllers can have access to it.
+
   def hacker_news_client
     # using .instance to declare singleton instance
     @hacker_news_client ||= Hackernews::Client.instance
@@ -26,5 +26,11 @@ class ApplicationController < ActionController::Base
   def custom_newsapi_client
     @custom_newsapi_client ||= Newsapi::Client.new
   end
+
+
+  def decorated_url
+    @decorated_url ||= Regionaldecorator::Englishlanguagedecorator.new(Regionaldecorator::Unitedstatesdecorator.new(Regionaldecorator::Urlconstructor.new))
+  end
+
 
 end

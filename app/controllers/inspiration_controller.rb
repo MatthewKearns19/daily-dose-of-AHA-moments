@@ -24,9 +24,16 @@ class InspirationController < ApplicationController
     @start = (params[:start] || 0).to_i # convert to an integer
     @per_page = (params[:per_page] || 10).to_i # convert to an integer
 
-    @count = 0
     @custom_topic = params[:custom_topic]
-    @articles = custom_newscatcher_client.latest_articles(@start, @per_page, @custom_topic)
+
+    @count = 0
+
+    @query = decorated_url.construct_url(@custom_topic)
+    puts @query
+
+    puts @query
+
+    @articles = custom_newscatcher_client.latest_articles(@start, @per_page, @query)
   end
 
   # calls the third api:newsapi for customized topic requests
