@@ -56,4 +56,18 @@ module Regionaldecorator
       @url.construct_url("#{url}&country=de")
     end
   end
+
+
+  ################ Media Decorators ################
+  class MediaTrueDecorator < RegionalDelegator
+    def construct_url(url)
+      @url.construct_url("#{url}&media=True")
+    end
+  end
+
+  class MediaFalseDecorator < RegionalDelegator
+    def construct_url(url)
+      @url.construct_url("#{url}&media=False")
+    end
+  end
 end

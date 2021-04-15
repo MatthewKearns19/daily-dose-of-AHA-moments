@@ -20,7 +20,7 @@ module Newscatcher
     private
 
     def get(query)
-      @url = "https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{query}" + "&media=True.json?print=pretty"
+      @url = "https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{query}" + ".json?print=pretty"
 
       # send to custom gem
       headings = NewscatcherBase.runrequest(@host, @key, @url)

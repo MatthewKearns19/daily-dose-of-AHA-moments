@@ -1,7 +1,7 @@
 # this was origionally in user.rb but moved here to allow
 # this class to become a decorator and any other decorations
 # to become decoupled from user.rb, to become closed yet open
-# for extention elswhere
+# for extension here
 class Decorateduser
   attr_reader :user
 
