@@ -32,11 +32,11 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     get user_course_url(@user, Course.last)
     assert_response :success
     # assert the new course name with the name displaying on the page
-    assert_select "strong", "Course name: testString"
+    assert_select "p", "testString"
   end
 
 
-  test "should create course, and the edit url along with the page text is asserting for that new course" do
+  test "should create course, and the edit url along with the edit page text asserting for that new course" do
     assert_difference('Course.count') do
       post user_courses_url(@user), params: { user_id: @user.id, course: {course_name: @course.course_name, course_description: @course.course_description, course_content: @course.course_content } }
     end
@@ -64,7 +64,7 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     patch user_course_url(@user, Course.last), params: { user_id: @user.id, course: {course_name: new_course.course_name } }
     assert_redirected_to user_course_url(@user, Course.last)
     follow_redirect!
-    assert_select "strong", "Course name: newtestString"
+    assert_select "p", "newtestString"
   end
 
   # Positive test case for deleting is also successful when I remove the confirmation check in the course/list views
