@@ -11,8 +11,11 @@
   </head>
 
   <body>
-    <%= render partial: "layouts/header" %>
-
+    <% if user_signed_in? %>
+      <%= render partial: "layouts/header" %>
+    <% else %>
+      <%= render partial: "layouts/not_logged_in_header" %>
+    <% end %>
 
     <section class="bg-light">
       <div class="container">
