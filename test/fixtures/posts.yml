@@ -1,0 +1,20 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# valid post
+one:
+  title: Mytitle
+  body: myBody
+
+# valid post
+four:
+  title: Mynewtitle
+  body: mynewBody
+
+# invalid post
+two:
+  title:
+  body: bodyWithoutTitle
+
+three:
+  title: titleWithoutBody
+  body:

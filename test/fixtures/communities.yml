@@ -1,0 +1,13 @@
+# valid communities
+one:
+  name: MyString
+  description: communitydescription
+
+# invalid communities
+two:
+  name:
+  description: communitydescription
+
+three:
+  name: MyString
+  description:
