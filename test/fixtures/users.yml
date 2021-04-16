@@ -9,27 +9,51 @@ one:
   last_name: MyString
   username:
   email: firstUniqueEmail@gmail.com
+  encrypted_password: mypassword1
 
 two:
   first_name:
   last_name: MyString
   username: user123
   email: SecondUniqueEmail@gmail.com
+  encrypted_password: mypassword1
 
 three:
   first_name: MyString
   last_name:
   username: username
   email: ThirdUniqueEmail@gmail.com
+  encrypted_password: mypassword1
 
 four:
   first_name: MyString
   last_name: MyString
   username: user12345
   email: fourthEmail
+  encrypted_password: mypassword1
 
 five:
   first_name: testfirstname
   last_name: testlastname
   username: testusername
   email: fifthUniqueEmail@gmail.com
+  encrypted_password: mypassword1
+
+six:
+  first_name: MyString
+  last_name: MyString
+  username: usertester
+  encrypted_password: mypassword1
+
+seven:
+  first_name: MyString
+  last_name: MyString
+  username: usertester
+  email: seventhUniqueEmail@gmail.com
+
+eight:
+  first_name: MyString
+  last_name: MyString
+  username: usertester
+  email: eighthUniqueEmail@gmail.com
+  encrypted_password: mypassword1

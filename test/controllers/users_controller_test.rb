@@ -21,7 +21,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select 'label', "Password confirmation"
   end
 
-  # Profile is set up for users so only testing
-  # devise user controller on sign up and login
+  # Profile is set up for users so only testing devise
+  # user controller on sign up and login in this test suite
 
 end

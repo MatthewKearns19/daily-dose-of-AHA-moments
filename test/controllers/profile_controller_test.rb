@@ -7,7 +7,7 @@ class ProfileControllerTest < ActionDispatch::IntegrationTest
     @user = users(:five)
     login_as(@user, :scope => :user)
 
-    #stop teh test contiinuing if it fails on login
+    #stop the test continuing if it fails on login
     assert_response :success
   end
 
