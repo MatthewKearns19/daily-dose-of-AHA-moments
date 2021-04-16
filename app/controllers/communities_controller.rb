@@ -10,6 +10,7 @@ before_action :set_community, only: [:show]
 
   def show
     @posts = @community.posts
+    @user = @community.user
   end
 
   def new
@@ -17,7 +18,7 @@ before_action :set_community, only: [:show]
   end
 
   def create
-      @community = Community.new community_values
+      @community = Community.new community_params
       @community.user_id = current_user.id
 
       if @community.save
@@ -26,6 +27,29 @@ before_action :set_community, only: [:show]
         render :new
       end
   end
+
+  def edit
+    @community = Community.find(params[:id])
+    @user = @community.user
+  end
+
+  def update
+    @community = Community.find(params[:id])
+
+    respond_to do |format|
+      if @community.update(community_params)
+        format.html { redirect_to community_path(@community), notice: "Course was successfully updated." }
+        format.json { render :show, status: :ok, location:community_path(@community) }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @community.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # By decision of design, Communities cannot be destroyed. This is mentioned as a warning
+  # before setting up the community. Community Admins can only edit a Community after creation,
+  # but not delete, as the conecpt is a space for other users to post/promot a topic or course.
 
   def search
     # replace placeholder with the queried (:q) params
@@ -43,7 +67,7 @@ before_action :set_community, only: [:show]
     @community = Community.find(params[:id])
   end
 
-  def community_values
+  def community_params
     params.require(:community).permit(:name, :url, :description)
   end
 

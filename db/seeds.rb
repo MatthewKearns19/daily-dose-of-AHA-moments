@@ -22,9 +22,9 @@ Users = User.create([
     password: 'mypassword'
   },
   { id: '3',
-    first_name: 'John',
-    last_name: 'Doe',
-    username: 'JohnDoeIsTheBest',
+    first_name: 'Advant',
+    last_name: 'Garde',
+    username: 'AdvantIsTheBest',
     email: 'TestUsername@gmail.com',
     password: 'mypassword'
   },

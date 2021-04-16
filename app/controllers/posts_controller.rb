@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   def show
     @community = Community.find(params[:community_id])
     @post = @community.posts.find(params[:id])
+    @user = @post.user
   end
 
   # GET community/1/posts/new
@@ -19,62 +20,53 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  # GET community/1/posts/1/edit
-  def edit
-    @community = Community.find(params[:community_id])
-    @post = @community.posts.find(params[:id])
-  end
-
   def create
       @post = Post.new(post_params)
       @post.user_id = current_user.id
       @post.community_id = params[:community_id]
+      @community = Community.find(params[:community_id])
 
       if @post.save
         # redirect back to the specific community_path using the params from above
-        redirect_to community_path(@post.community_id)
+        redirect_to community_path(@community)
       else
-        @community = Community.find(params[:community_id])
         render :new
       end
   end
 
-  # POST /posts or /posts.json
-  #def create
-  #  @post = Post.new(post_params)
-
-  #  respond_to do |format|
-  #    if @post.save
-  #      format.html { redirect_to @post, notice: "Post was successfully created." }
-  #      format.json { render :show, status: :created, location: @post }
-  #    else
-  #      format.html { render :new, status: :unprocessable_entity }
-  #      format.json { render json: @post.errors, status: :unprocessable_entity }
-  #    end
-  #  end
-  #end
+  # GET community/1/posts/1/edit
+  def edit
+    @community = Community.find(params[:community_id])
+    @post = @community.posts.find(params[:id])
+    @user = @post.user
+  end
 
   # PATCH/PUT /posts/1 or /posts/1.json
-  #def update
-  #  respond_to do |format|
-  #    if @post.update(post_params)
-  #      format.html { redirect_to @post, notice: "Post was successfully updated." }
-  #      format.json { render :show, status: :ok, location: @post }
-  #    else
-  #      format.html { render :edit, status: :unprocessable_entity }
-  #      format.json { render json: @post.errors, status: :unprocessable_entity }
-  #    end
-  #  end
-  #end
+  def update
+    @community = Community.find(params[:community_id])
+    @post = @community.posts.find(params[:id])
+    respond_to do |format|
+      if @post.update(post_params)
+        format.html { redirect_to community_post_path(@community, @post), notice: "Post was successfully updated." }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /posts/1 or /posts/1.json
-  #def destroy
-  #  @post.destroy
-  #  respond_to do |format|
-  #    format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-  #    format.json { head :no_content }
-  #  end
-  #end
+  def destroy
+    @community = Community.find(params[:community_id])
+    @post = Post.find(params[:id])
+
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to community_path(@community), notice: "Post was successfully destroyed and is no longer available in #{@community.name}." }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

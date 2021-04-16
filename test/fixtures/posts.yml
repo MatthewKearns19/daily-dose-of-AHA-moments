@@ -5,6 +5,11 @@ one:
   title: Mytitle
   body: myBody
 
+# valid post
+four:
+  title: Mynewtitle
+  body: mynewBody
+
 # invalid post
 two:
   title:
