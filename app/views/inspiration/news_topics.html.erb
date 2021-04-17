@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-8 mt-1">
+        <p class="h1">Topics of Inspiration</p>
+      </div>
+    </div>
+    <p class="mt-1 mb-1">on <%= DateTime.now.to_s(:date_stamp)%></p>
+    <div class="row">
+      <div class="col-sm-8 mt-1">
+        <% @stories.each do |story| %>
+          <div class="card mt-3 shadow p-3 mb-1 bg-white rounded">
+            <strong class=" h5 mt-0 mb-1"><%= story['title'] %></strong>
+            <p>by <%= story['by'] %> <%= time_ago_in_words(story['time']) %> ago </p>
+            <% if story['descendants'] != "" %>
+              <p><%= "#{story['descendants']} comments -> " %> <%= link_to "quick view discussion", story_comments_path(story['id']) %></p>
+            <% end %>
+
+            <a href="<%= story['url'] %>" class="btn btn-outline-primary rounded border align-self-end" role="button">View full Story</a>
+
+          </div>
+          <% @count = @count + 1 %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= render partial: "inspiration/custom_topic_buttons"%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 mt-1">
+        <nav class="mt-2">
+          <ul class="pagination float-left">
+            <!--Disabled when the current start=0 passed from the controller
+            when origionally hit, and then adding or subtracting the per_page
+            value from the current value( i.e the new current value will be > 0
+            once it is clicked once and this 'news_topics' path is called again)-->
+            <li class="page-item <%= 'disabled' if @start == 0 %>">
+              <%= link_to 'Previous', top_news_stories_path(start: @start - @per_page), class: 'page-link' %>
+            </li>
+          </ul>
+          <ul class="pagination float-right">
+            <li class="page-item <%= 'disabled' if @count < 10 %>">
+              <%= link_to 'Next', top_news_stories_path(start: @start + @per_page), class: 'page-link' %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="h2 mb-5 mt-4"><%= @course.course_name %></p>
+
+      <strong><p class="mb-0">Course Description:</p></strong>
+      <p><%= @course.course_description %></p>
+
+      <div class="card mb-5" style="width: 60rem;">
+        <div class="card-body">
+          <% if @user == current_user %>
+            <div class="row mb-1">
+              <div class="col ml-1">
+                <%= link_to 'Edit', edit_user_course_path(@user, @course) %> |
+                <%= link_to 'Back', user_courses_path(@user) %> |
+                <%= link_to 'Delete', user_course_path(@user, @course), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-danger" %>
+              </div>
+            </div>
+          <% end %>
+          <strong><h6 class="card-subtitle mb-2 mt-2 text-muted">Course content:</h6></strong>
+          <p class="card-text"><%= @course.course_content %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

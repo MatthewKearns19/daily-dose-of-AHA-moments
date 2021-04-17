@@ -1,0 +1,9 @@
+<h2>session pong view</h2>
+<% if @breadcrumbs &&  @breadcrumbs.any? %>
+  <p>Breadcrumb history</p>
+  <ul>
+    <%  @breadcrumbs[0..2].each do |breadcrumb| %>
+      <li><%= link_to breadcrumb, breadbrumb %></li
+    <% end %>
+  </ul>
+<% end %>

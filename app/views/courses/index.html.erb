@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-8 mt-4 mb-0">
+    <% if @user == current_user %>
+      <% if @courses.size > 0 %>
+        <h2>These are all of your available courses <%= @user.first_name %></h2>
+      <% else %>
+        <h3><%= @user.first_name %>, you have no courses, click new course if you would like to create one</h3>
+      <% end %>
+    <% else %>
+      <% if @courses.size > 0 %>
+        <h2>All courses of <%= @user.username %></h2>
+      <% else %>
+        <h3>Sorry, <%= @user.username %> has no courses. Keep an eye out for upcoming courses</h3>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <div>
+      <% if @user == current_user %>
+        <%= link_to 'New Course', new_user_course_path(@user), class: "btn btn-outline-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-sm-8">
+    <%= render partial: "courses/list", locals:{courses: @courses}%>
+  </div>
+</div>

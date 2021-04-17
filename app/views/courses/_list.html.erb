@@ -1,0 +1,11 @@
+<% courses.each do |course| %>
+  <div class="card mt-3 shadow p-3 mb-5 bg-white rounded">
+    <h4 class="mb-0"> <%= link_to course.course_name, user_course_path(course.user_id, course) %></h4>
+    <p> <%= course.course_description %></p>
+    <p> <%= truncate course.course_content, length: 150 %></p>
+    <% if @user == current_user %>
+      <td><%= link_to 'Edit', edit_user_course_path(@user, course) %></td>
+      <td><%= link_to 'Delete', user_course_path(@user, course), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </div>
+<% end %>

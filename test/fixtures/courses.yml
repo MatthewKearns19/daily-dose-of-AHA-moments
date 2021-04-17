@@ -1,0 +1,28 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# invalid courses
+one:
+  course_name:
+  course_description: MyString
+  course_content: MyString
+
+two:
+  course_name: MyString
+  course_description:
+  course_content: MyString
+
+three:
+  course_name: MyString
+  course_description: MyString
+  course_content:
+
+# valid courses
+four:
+  course_name: testString
+  course_description: testDescription
+  course_content: testContent
+
+five:
+  course_name: newtestString
+  course_description: newtestDescription
+  course_content: newtestContent

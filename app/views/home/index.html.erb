@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col mt-4">
+        <p class="h7 float-right"><i>Welcome <%= @decorated_name %></i></p>
+      </div>
+    </div>
+    <div class="row">
+      <p class="h4">Topics of Inspiration <small>on <%= DateTime.now.to_s(:date_stamp)%></small></p>
+    </div>
+    <div class="row mt-4">
+      <div class="list-group list-group-horizontal list-group-flush flex-md-row shadow">
+        <% @stories.each do |story| %>
+          <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <a class="mb-1" href="<%= story['url'] %>"><%= story['title'] %></a>
+            </div>
+            <small>Posted by <%= story['by'] %> <%= time_ago_in_words(story['time']) %> ago</small>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <%= link_to 'View more Topics of Inspiration', top_news_stories_path, class: "btn btn-outline-primary rounded border mt-4 mb-3" %>
+    </div>
+  </div>
+  <hr class="mt-1 mb-3">
+  <div class="row">
+    <div class="col mt-4">
+      <p class="h1">Aha feed:</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 mt-1">
+      <%= render partial: "posts/list", locals:{posts: @posts}%>
+    </div>
+    <div class="col-sm-4">
+      <p class="h4 mt-3">Communities</p>
+
+      <div class="card shadow">
+        <ul class="list-group list-group-flush">
+          <% @communities.each do | community| %>
+            <li class="list-group-item"><%= link_to community.name, community_path(community) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <%# link to community path in community -> index.html %>
+      <%= link_to "View All Communities", communities_path, class: "btn btn-outline-primary rounded border mt-4" %>
+    </div>
+  </div>
+</div>

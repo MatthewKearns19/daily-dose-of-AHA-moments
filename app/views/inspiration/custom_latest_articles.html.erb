@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-8 mt-1">
+        <p class="h1">Custom Topics of Inspiration - latest <%= @custom_topic %> headlines</p>
+      </div>
+    </div>
+    <p class="mt-1 mb-1">on <%= DateTime.now.to_s(:date_stamp)%></p>
+    <div class="row">
+      <div class="col-sm-8 mt-1">
+        <% @articles.each do |article| %>
+          <!--We dont want to include the article if it is a reddit post with no comments-->
+          <% next if (article['link'].include? "reddit") && (article['summary'].include? "no comments") %>
+          <div class="card mt-3 shadow p-3 mb-1 bg-white rounded">
+            <h5 class="mt-0 mb-1">
+              <a href="<%= article['link'] %>"><%= article['title'] %></a>
+            </h5>
+            <p> Topic: <%= article['topic'] %> | Country of origin: <%= article['country'] %> | Published: <%= article['published_date'] %></p>
+            <!--We dont want to include the summary heading if there is no summary-->
+            <% if article['summary'] != "" %>
+              <strong>Summary:</strong>
+              <p><%= article['summary'] %></p>
+            <% end %>
+          </div>
+          <% @count = @count + 1 %>
+        <% end %>
+      </div>
+      <div class="col-sm-4 mt-1">
+        <%= render partial: "inspiration/custom_topic_buttons"%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 mt-1">
+        <nav class="mt-2">
+          <ul class="pagination float-left">
+            <!--Disabled when the current start=0 passed from the controller
+            when origionally hit, and then adding or subtracting the per_page
+            value from the current value( i.e the new current value will be > 0
+            once it is clicked once and this path is called again)-->
+            <li class="page-item <%= 'disabled' if @start == 0 %>">
+              <%= link_to 'Previous', custom_latest_articles_path(start: @start - @per_page), class: 'page-link' %>
+            </li>
+          </ul>
+          <!--Since we are showing 10 per page, this is disabled if the @headlines json array is less than 10-->
+          <ul class="pagination float-right">
+            <li class="page-item <%= 'disabled' if @count < 10 %>">
+              <%= link_to 'Next', custom_latest_articles_path(start: @start + @per_page), class: 'page-link' %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

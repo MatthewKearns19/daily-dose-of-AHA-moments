@@ -22,6 +22,36 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'observer'
+
+gem 'delegate'
+
+gem 'activerecord-session_store'
+
+gem 'bootstrap'
+
+gem 'rexml'
+
+gem 'ransack'
+
+gem 'httparty'
+
+gem 'excon'
+
+gem "openssl"
+
+gem 'net-http'
+
+gem 'news-api'
+
+gem 'open-uri'
+
+# custom gem
+gem 'basenewscatcherbuilder'
+
+
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -34,7 +64,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'sqlite3', '~> 1.3.6'
+  gem 'sqlite3', '~> 1.4'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -51,6 +81,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rspec-rails'
 end
 
 # Heroku uses Heroku Postgres DB based on PostgreSQL
@@ -62,3 +93,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
