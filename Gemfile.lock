@@ -291,7 +291,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-session_store
-  basenewscatcherbuilder
+  basenewscatcherbuilder (~> 0.0.0)
   bootsnap (>= 1.4.4)
   bootstrap
   byebug

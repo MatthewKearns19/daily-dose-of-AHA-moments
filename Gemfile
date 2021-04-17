@@ -48,7 +48,7 @@ gem 'news-api'
 gem 'open-uri'
 
 # custom gem
-gem 'basenewscatcherbuilder'
+gem 'basenewscatcherbuilder', '~> 0.0.0'
 
 
 
