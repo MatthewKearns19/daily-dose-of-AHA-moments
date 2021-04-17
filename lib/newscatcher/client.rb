@@ -11,7 +11,9 @@ module Newscatcher
     end
 
     def latest_articles(start = @start, per_page = @start, query = @query)
+      puts query
       articles = get(query)[start...start + per_page]
+
 
 
       articles
@@ -20,10 +22,11 @@ module Newscatcher
     private
 
     def get(query)
-      @url = "https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{query}" + ".json?print=pretty"
+      @url = "https://newscatcher.p.rapidapi.com/v1/latest_headlines?topic=" + "#{query}"
 
       # send to custom gem
       headings = NewscatcherBase.runrequest(@host, @key, @url)
+      puts headings
 
 
       articles = headings['articles']

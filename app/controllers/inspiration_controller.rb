@@ -29,7 +29,7 @@ class InspirationController < ApplicationController
     @count = 0
 
     # de-coupled url decorator to allow choosing the url structure at runtime, better for future scaling
-    decorated_url = EnglishDecorator.new(UnitedStatesDecorator.new(Regionaldecorator::UrlConstructor.new))
+    decorated_url = Regionaldecorator::EnglishDecorator.new(Regionaldecorator::UnitedStatesDecorator.new(Regionaldecorator::UrlConstructor.new))
     @query = decorated_url.construct_url(@custom_topic)
 
     puts @query
