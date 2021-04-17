@@ -10,14 +10,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-light">
     <% if user_signed_in? %>
       <%= render partial: "layouts/header" %>
     <% else %>
       <%= render partial: "layouts/not_logged_in_header" %>
     <% end %>
 
-    <section class="bg-light">
+    <section class="bg-light mb-8">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 pt-4">
@@ -25,8 +25,12 @@
           </div>
         </div>
       </div>
-    </section>
+    </section
 
-    <%= render partial: "layouts/footer" %>
+    <% if user_signed_in? %>
+      <%= render partial: "layouts/footer" %>
+    <% else %>
+      <%= render partial: "layouts/not_logged_in_footer" %>
+    <% end %>
   </body>
 </html>
